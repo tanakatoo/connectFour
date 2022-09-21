@@ -1,21 +1,124 @@
-/* game board table */
+body{
+  font-family:'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  box-sizing: border-box;
+}
 
+.header{
+  text-align: center;
+}
+
+h1{
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: -3px -5px 30px yellow;
+  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+}
+
+.resultsDiv{
+  text-align: center;
+}
+
+.results{
+  display: block;
+  font-size: 3rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  animation: bigSmall;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+}
+
+@keyframes bigSmall {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.5); 
+    color: black;
+  }
+  50%{
+    opacity: 1;
+    transform: scale(2);
+    color: yellow;
+    text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+  }
+  
+  100% {
+    opacity: 1;
+    color: black;
+    transform: scale(1); } 
+  }
+
+
+#playAgain{
+
+  display: inline-block;
+  max-width: 20rem;
+  font-size: 1.3rem;
+  background-color: #126c00;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  margin: 2rem;
+  padding: 13px 23px;
+  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+}
+
+#playAgain:hover{
+  transform: translate(-2px,-2px);
+  box-shadow: 1px 3px 10px rgb(164, 164, 164);
+}
+
+#playAgain:active{
+  transform: translate(1px,2px);
+  box-shadow: 1px 2px 3px rgb(147, 147, 147);
+}
+
+
+#game{
+  display: flex;
+  justify-content: center;
+}
+
+#board {
+  position: relative;
+}
+
+/* game board table */
 #board td {
   width: 50px;
   height: 50px;
   border: solid 1px #666;
 }
 
-/* pieces are div within game table cells: draw as colored circles */
 
-.piece {
-  /* TODO: make into circles */
+.hoverPiece{
   margin: 5px;
+  border-radius: 100px;
   width: 80%;
   height: 80%;
 }
+/* pieces are div within game table cells: draw as colored circles */
 
-/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+.piece {
+  margin: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  box-shadow: inset -2px -5px 10px rgba(0,0,0,.5);
+  transition-timing-function: ease-out;
+  transition-duration: 1s;
+}
+
+
+.p1 {
+  background-color: red;
+}
+
+.p2{
+  background-color: blue;
+}
 
 /* column-top is table row of clickable areas for each column */
 
@@ -23,6 +126,10 @@
   border: dashed 1px lightgray;
 }
 
-#column-top td:hover {
-  background-color: gold;
+#column-top td div:hover {
+  background-color: red;
+}
+
+#column-top td div.p2hover:hover {
+  background-color: blue;
 }
