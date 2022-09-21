@@ -5,8 +5,8 @@
  * board fills (tie)
  */
 
-const WIDTH = 7;
-const HEIGHT = 6;
+const WIDTH = 4;
+const HEIGHT = 4;
 
 let currPlayer = 1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -145,7 +145,7 @@ function handleClick(evt) {
 
   // check for tie
   const allFilled = board.every(cells => cells.every(cell=>cell !== null))
-  allFilled? endGame(): ''
+  allFilled? endGame("It's a tie!"): ''
 
   // switch players
   currPlayer === 1 ? currPlayer = 2 : currPlayer = 1 
